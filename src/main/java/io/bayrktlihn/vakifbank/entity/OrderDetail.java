@@ -1,6 +1,7 @@
 package io.bayrktlihn.vakifbank.entity;
 
 
+import io.bayrktlihn.vakifbank.enums.Currency;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -16,7 +17,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.Currency;
 
 @Getter
 @Setter

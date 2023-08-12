@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 @Component
@@ -37,6 +38,8 @@ public class VakifBankClient {
             // 400
         } catch (HttpServerErrorException httpServerErrorException) {
             // 500
+        } catch (ResourceAccessException resourceAccessException){
+            // ConnectException SocketTimeoutException
         }
         throw new RuntimeException();
     }
