@@ -81,11 +81,11 @@ public class VakifBankService {
             return;
         }
 
-        if(status.equals("A")){
+        if (status.equals("A")) {
             throw PaymentException.createNotSupportedHalfSecurePayment();
         }
 
-        if(status.equals("U")){
+        if (status.equals("U")) {
             throw PaymentException.createNotSupportedNonSecurePayment();
         }
 
@@ -96,7 +96,7 @@ public class VakifBankService {
         if (status.equals("E")) {
             String errorCode = iPaySecureDto.getResultDetail().getErrorCode();
             String errorMessage = iPaySecureDto.getResultDetail().getErrorMessage();
-            String fixedErrorCode = String.format("9%06d", errorCode);
+            String fixedErrorCode = String.format("9%06d", Integer.parseInt(errorCode));
             throw PaymentException.create(fixedErrorCode, errorMessage);
         }
 
