@@ -3,6 +3,7 @@ package io.bayrktlihn.vakifbank.controller;
 import io.bayrktlihn.vakifbank.dto.GetBinRequestDto;
 import io.bayrktlihn.vakifbank.dto.GetBinResponseDto;
 import io.bayrktlihn.vakifbank.service.BinService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ public class BankCardController {
 
 
     @PostMapping("bin")
-    public GetBinResponseDto getBin(@RequestBody GetBinRequestDto getBinRequestDto) {
+    public GetBinResponseDto getBin(@Valid @RequestBody GetBinRequestDto getBinRequestDto) {
         return binService.getBinByCardNumber(getBinRequestDto.getCardNumber());
     }
 }
