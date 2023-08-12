@@ -3,6 +3,7 @@ package io.bayrktlihn.vakifbank.controller;
 
 import io.bayrktlihn.vakifbank.dto.PayWithThreeDSecureRequestDto;
 import io.bayrktlihn.vakifbank.service.VakifBankService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ public class VakifBankController {
 
 
     @PostMapping("payWithThreeDSecure")
-    public Map<String, Object> payWithThreeDSecure(@RequestBody PayWithThreeDSecureRequestDto payWithThreeDSecureRequestDto) {
+    public Map<String, Object> payWithThreeDSecure(@Valid @RequestBody PayWithThreeDSecureRequestDto payWithThreeDSecureRequestDto) {
         return vakifBankService.payWithThreeDSecure(payWithThreeDSecureRequestDto);
     }
 

@@ -1,7 +1,10 @@
 package io.bayrktlihn.vakifbank.entity;
 
 
+import io.bayrktlihn.vakifbank.enums.Currency;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,6 +39,11 @@ public class Payment {
 
     @Builder.Default
     private PaymentStatus paymentStatus = PaymentStatus.NOT_PAID;
+
+    @Enumerated(EnumType.STRING)
+    private Currency currency;
+
+    private Integer installmentCount;
 
 
 }

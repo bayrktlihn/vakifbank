@@ -4,13 +4,19 @@ import lombok.Getter;
 
 @Getter
 public enum CardSchema {
-    AMEX,
-    UNION_PAY,
-    PROPRIETARY_DOMESTIC,
-    MASTERCARD,
-    VISA,
-    TROY;
+    AMEX("400"),
+    UNION_PAY(null),
+    PROPRIETARY_DOMESTIC(null),
+    MASTERCARD("200"),
+    VISA("100"),
+    TROY("300");
 
+
+    private final String code;
+
+    CardSchema(String code) {
+        this.code = code;
+    }
 
     public static CardSchema parse(String name) {
         if (name.equals("AMEX")) {

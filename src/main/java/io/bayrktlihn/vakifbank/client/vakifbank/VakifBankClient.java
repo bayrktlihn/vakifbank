@@ -29,7 +29,7 @@ public class VakifBankClient {
 
         ResponseEntity<IPaySecureDto> response = restTemplate.exchange(vakifBankProperties.getEnrollmentAddress(), HttpMethod.POST, headerAndBody, IPaySecureDto.class);
 
-        return null;
+        return response.getBody();
 
     }
 
@@ -45,8 +45,9 @@ public class VakifBankClient {
         map.add("BrandName", param.getBrandName());
         map.add("SuccessUrl", param.getSuccessUrl());
         map.add("FailureUrl", param.getFailureUrl());
-
-
+        if (param.getInstallmentCount() != null && !param.getInstallmentCount().equals(Integer.valueOf("1")) && !param.getInstallmentCount().equals(Integer.valueOf("0"))) {
+            map.add("InstallmentCount", param.getInstallmentCount().toString());
+        }
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("Accept", MediaType.APPLICATION_XML_VALUE);
         httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);

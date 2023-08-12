@@ -34,10 +34,10 @@ public class CheckEnrollmentParamDto {
     @Builder.Default
     private String failureUrl = null;
     @Builder.Default
-    private String fullName = null;
-    @Builder.Default
     private String cvv = null;
     @Builder.Default
     private String clientIpAddress = null;
+    @Builder.Default
+    private Integer installmentCount = null;
 
 }
