@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 @Component
@@ -27,10 +29,16 @@ public class VakifBankClient {
 
         RestTemplate restTemplate = createRestTemplate(70000, 7000);
 
-        ResponseEntity<IPaySecureDto> response = restTemplate.exchange(vakifBankProperties.getEnrollmentAddress(), HttpMethod.POST, headerAndBody, IPaySecureDto.class);
 
-        return response.getBody();
-
+        try {
+            ResponseEntity<IPaySecureDto> response = restTemplate.exchange(vakifBankProperties.getEnrollmentAddress(), HttpMethod.POST, headerAndBody, IPaySecureDto.class);
+            return response.getBody();
+        } catch (HttpClientErrorException httpClientErrorException) {
+            // 400
+        } catch (HttpServerErrorException httpServerErrorException) {
+            // 500
+        }
+        throw new RuntimeException();
     }
 
     private static HttpEntity<LinkedMultiValueMap<String, String>> prepareHeaderAndBodyForCheckEnrollment(CheckEnrollmentParamDto param) {
