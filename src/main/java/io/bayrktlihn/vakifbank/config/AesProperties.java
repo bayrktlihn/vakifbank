@@ -11,6 +11,6 @@ import org.springframework.context.annotation.Configuration;
 @Setter
 public class AesProperties {
 
-    private String key;
+    private String base64EncodedKey;
 
 }

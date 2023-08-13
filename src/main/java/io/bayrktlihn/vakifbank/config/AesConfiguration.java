@@ -10,7 +10,7 @@ public class AesConfiguration {
 
     @Bean
     public Encryption aes(AesProperties aesProperties) {
-        return Encryption.createAes(aesProperties.getKey());
+        return Encryption.createAes(aesProperties.getBase64EncodedKey());
     }
 
 }

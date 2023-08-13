@@ -36,10 +36,10 @@ public class Aes implements Encryption {
 
 
     @Override
-    public String decrypt(String base64EncryptedKey) {
+    public String decrypt(String base64Encrypted) {
 
         try {
-            byte[] decodedBase64EncryptedKey = Base64.getDecoder().decode(base64EncryptedKey);
+            byte[] decodedBase64EncryptedKey = Base64.getDecoder().decode(base64Encrypted);
 
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
             SecretKeySpec secretKey = new SecretKeySpec(keyBytes, "AES");
