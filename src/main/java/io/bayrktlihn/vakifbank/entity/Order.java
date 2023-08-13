@@ -9,9 +9,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -23,7 +25,8 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "order")
-public class Order {
+@SuperBuilder
+public class Order extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,6 +35,7 @@ public class Order {
 
     private BigDecimal totalAmount;
 
+    @Builder.Default
     @OneToMany
     private List<OrderDetail> orderDetails = new ArrayList<>();
 

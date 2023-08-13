@@ -1,4 +1,4 @@
-package io.bayrktlihn.vakifbank.entity;
+package io.bayrktlihn.vakifbank.enums;
 
 public enum PaymentStatus {
     NOT_PAID;

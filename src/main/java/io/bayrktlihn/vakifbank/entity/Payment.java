@@ -2,6 +2,7 @@ package io.bayrktlihn.vakifbank.entity;
 
 
 import io.bayrktlihn.vakifbank.enums.Currency;
+import io.bayrktlihn.vakifbank.enums.PaymentStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -14,6 +15,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
 
@@ -23,19 +25,16 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Entity
 @Table(name = "payment")
-@Builder
-public class Payment {
+@SuperBuilder
+public class Payment extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Builder.Default
-    private Long id = null;
+    private Long id;
 
-    @Builder.Default
-    private Long orderNumber = null;
+    private Long orderNumber;
 
-    @Builder.Default
-    private BigDecimal totalAmount = null;
+    private BigDecimal totalAmount;
 
     @Builder.Default
     private PaymentStatus paymentStatus = PaymentStatus.NOT_PAID;
